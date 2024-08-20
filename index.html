@@ -1,102 +1,465 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Sederhana</title>
+    <title>NyannKoZen</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <style>
-/* Reset beberapa style default */
-body, h1, h2, p, ul {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
 
-/* Styling umum untuk body */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    padding: 0;
-    margin: 0;
-}
+    .navbar {
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+    }
 
-/* Styling untuk header */
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-}
+    .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-header h1 {
-    margin-bottom: 0.5rem;
-}
+    .navbar-brand {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+    }
 
-header nav ul {
-    list-style: none;
-}
+    .navbar-toggler {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
 
-header nav ul li {
-    display: inline;
-    margin: 0 1rem;
-}
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: white;
+        margin: 5px 0;
+    }
 
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
+    .navbar-menu {
+        display: flex;
+    }
 
-/* Styling untuk main content */
-main {
-    padding: 1rem;
-}
+    .navbar-nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
 
-section {
-    margin-bottom: 1.5rem;
-}
+    .nav-item {
+        position: relative;
+    }
 
-/* Styling untuk footer */
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
+    .nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+    }
 
+    .nav-link:hover {
+        background-color: #333;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: white;
+        color: black;
+        top: 100%;
+        left: 0;
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        transform: scale(0.9);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .dropdown-item {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f0f0f0;
+    }
+
+    .dropdown-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Show the dropdown menu and animate it */
+    .nav-item:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: scale(1);
+        animation: bounceIn 0.5s ease-out;
+    }
+
+    /* Bounce In Animation */
+    @keyframes bounceIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .navbar-menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .navbar-menu.active {
+            display: flex;
+        }
+
+        .nav-item {
+            width: 100%;
+        }
+
+        .nav-link {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .navbar-toggler {
+            display: block;
+        }
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    .header {
+        background-color: #ea0000;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .carousel-container {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: #fff;
+        padding: 10px;
+    }
+
+    .carousel-item img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    .carousel-item p {
+        margin: 10px 0 0;
+    }
+
+    .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 50%;
+        font-size: 18px;
+    }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .carousel-item img {
+            width: 100%;
+        }
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    .header {
+        background-color: #ea0000;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .carousel-container {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: #fff;
+        padding: 10px;
+    }
+
+    .carousel-item img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    .carousel-item p {
+        margin: 10px 0 0;
+    }
+
+    .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 50%;
+        font-size: 18px;
+    }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+
+    .app-description {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .app-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .app-icon {
+        width: 150px;
+        height: 150px;
+        margin-right: 20px;
+        border-radius: 10px;
+    }
+
+    .description-content {
+        flex: 1;
+    }
+
+    .description-content h3 {
+        margin-top: 0;
+    }
+
+    .download-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #6200ea;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .download-btn:hover {
+        background-color: #3700b3;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .carousel-item img {
+            width: 100%;
+        }
+
+        .app-info {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .app-icon {
+            margin: 0 0 20px 0;
+        }
+    }
 </style>
+
 <body>
-    <header>
-        <h1>Selamat Datang di Website Kami</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#contact">Kontak</a></li>
-            </ul>
-        </nav>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">NyannKoZen</a>
+            <button class="navbar-toggler" id="navbar-toggler">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="navbar-menu" id="navbar-menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Menu</a>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <div class="dropdown-item"><a
+                                    href="https://www.instagram.com/nyannko.studio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">instagram</a>
+                            </div>
+                            <div class="dropdown-item">Public Grup</div>
+                            <div class="dropdown-item">Status</div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <header class="header">
+        <h1>What News?</h1>
     </header>
-    <main>
-        <section id="home">
-            <h2>Beranda</h2>
-            <p>Ini adalah bagian beranda dari website kami.</p>
+    <main class="main-content">
+        <section class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="./foto/game 1.png" alt="...">
+                    <p>Twins</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="./foto/./game 2(0;00;00;00).png" alt="App 2">
+                    <p>Game</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="./foto/game 1.png" alt="App 3">
+                    <p>App 3</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="./foto/game 2(0;00;00;00).png" alt="App 4">
+                    <p>App 4</p>
+                </div>
+            </div>
+            <button class="carousel-control prev" id="prev-btn">&#10094;</button>
+            <button class="carousel-control next" id="next-btn">&#10095;</button>
         </section>
-        <section id="about">
-            <h2>Tentang Kami</h2>
-            <p>Di sini Anda dapat menemukan informasi tentang kami.</p>
-        </section>
-        <section id="contact">
-            <h2>Kontak Kami</h2>
-            <p>Hubungi kami melalui email di info@websitekami.com.</p>
+        <section class="app-description">
+            <h2>Coming Soon!</h2>
+            <div class="app-info">
+                <img src="./foto/a934278c-7295-4f64-888a-4bfb6f4ffb3f.jpg" alt="App Icon" class="app-icon">
+                <div class="description-content">
+                    <h3>Twins (Prologue) </h3>
+                    <p>Menceritakan Kakak dan Adek bernama Chiya dan Chiyu yang harus bertahan hidup dari pandedmik
+                        mayat hidup di dalam sekolahnya!</p>
+                    <a href="#" class="download-btn">Coming Soon!</a>
+                </div>
+            </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Website Kami. Semua hak cipta dilindungi.</p>
-    </footer>
+    <script>
+        document.getElementById('navbar-toggler').addEventListener('click', function () {
+            var menu = document.getElementById('navbar-menu');
+            menu.classList.toggle('active');
+        });
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const carousel = document.querySelector('.carousel');
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+        let index = 0;
+
+        function updateCarousel() {
+            const offset = -index * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            index = (index + 1) % totalItems;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            index = (index - 1 + totalItems) % totalItems;
+            updateCarousel();
+        });
+
+        // Auto slide
+        setInterval(() => {
+            nextBtn.click();
+        }, 5000); // Change slides every 5 seconds
+
+    </script>
 </body>
+
 </html>
