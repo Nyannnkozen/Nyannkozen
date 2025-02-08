@@ -4,289 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NyannKoZen</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>NyannKo ZEN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
 
-    .navbar {
+    body {
+
         background-color: black;
-        color: white;
-        padding: 10px 20px;
     }
 
-    .navbar-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .navbar-brand {
-        color: white;
-        text-decoration: none;
-        font-size: 24px;
-    }
-
-    .navbar-toggler {
+    #results-container {
         display: none;
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
-
-    .bar {
-        display: block;
-        width: 25px;
-        height: 3px;
-        background: white;
-        margin: 5px 0;
-    }
-
-    .navbar-menu {
-        display: flex;
-    }
-
-    .navbar-nav {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-    }
-
-    .nav-item {
-        position: relative;
-    }
-
-    .nav-link {
-        color: white;
-        text-decoration: none;
-        padding: 10px 15px;
-        display: block;
-    }
-
-    .nav-link:hover {
-        background-color: #333;
-    }
-
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        background-color: white;
-        color: black;
-        top: 100%;
-        left: 0;
-        list-style: none;
-        padding: 10px;
-        margin: 0;
-        min-width: 160px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        border-radius: 5px;
-        transform: scale(0.9);
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .dropdown-item {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        cursor: pointer;
-    }
-
-    .dropdown-item:hover {
-        background-color: #f0f0f0;
-    }
-
-    .dropdown-item:last-child {
-        border-bottom: none;
-    }
-
-    /* Show the dropdown menu and animate it */
-    .nav-item:hover .dropdown-menu {
-        display: block;
-        opacity: 1;
-        transform: scale(1);
-        animation: bounceIn 0.5s ease-out;
-    }
-
-    /* Bounce In Animation */
-    @keyframes bounceIn {
-        0% {
-            opacity: 0;
-            transform: scale(0.9);
-        }
-
-        50% {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        100% {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-        .navbar-menu {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .navbar-menu.active {
-            display: flex;
-        }
-
-        .nav-item {
-            width: 100%;
-        }
-
-        .nav-link {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .navbar-toggler {
-            display: block;
-        }
-    }
-
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-    }
-
-    .header {
-        background-color: #ea0000;
-        color: white;
-        text-align: center;
-        padding: 20px;
-    }
-
-    .main-content {
-        padding: 20px;
-    }
-
-    .carousel-container {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-        overflow: hidden;
-    }
-
-    .carousel {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .carousel-item {
-        min-width: 100%;
-        box-sizing: border-box;
-        text-align: center;
-        background-color: #fff;
-        padding: 10px;
-    }
-
-    .carousel-item img {
-        max-width: 100%;
-        border-radius: 10px;
-    }
-
-    .carousel-item p {
-        margin: 10px 0 0;
-    }
-
-    .carousel-control {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        border-radius: 50%;
-        font-size: 18px;
-    }
-
-    .prev {
-        left: 10px;
-    }
-
-    .next {
-        right: 10px;
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-        .carousel-item img {
-            width: 100%;
-        }
-    }
-
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-    }
-
-    .header {
-        background-color: #000000;
-        color: white;
-        text-align: center;
-        padding: 20px;
-    }
-
-    .main-content {
-        padding: 20px;
-    }
-
-    .carousel-container {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-        overflow: hidden;
-    }
-
-    .carousel {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .carousel-item {
-        min-width: 100%;
-        box-sizing: border-box;
-        text-align: center;
-        background-color: #fff;
-        padding: 10px;
-    }
-
-    .carousel-item img {
-        max-width: 100%;
-        border-radius: 10px;
-    }
-
-    .carousel-item p {
-        margin: 10px 0 0;
-    }
-
-    .carousel-control {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        border-radius: 50%;
-        font-size: 18px;
+        /* Secara default disembunyikan */
     }
 
     .prev {
@@ -375,61 +107,141 @@
     .dec {
         color: #3700b3;
     }
+
+    .list22 {
+        padding: 30px;
+    }
+
+    .donasi-button {
+        position: relative;
+        padding: 20px 40px;
+        font-size: 2vw;
+        /* Menggunakan vw untuk responsivitas ukuran teks */
+        background-color: #28a745;
+        color: white;
+        border: 2px solid #28a745;
+        border-radius: 50px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: color 0.3s, background-color 0.3s;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .donasi-button:hover {
+        color: #fff;
+        background-color: #d9534f;
+        /* Merah saat hover */
+        border-color: #d9534f;
+    }
+
+    .donasi-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(45deg,
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.2) 10px,
+                rgba(0, 0, 0, 0.1) 10px,
+                rgba(0, 0, 0, 0.1) 20px);
+        animation: slide 2s infinite linear;
+    }
+
+    @keyframes slide {
+        0% {
+            left: -100%;
+        }
+
+        100% {
+            left: 100%;
+        }
+    }
+
+    /* Media query untuk perangkat lebih kecil */
+    @media (max-width: 600px) {
+        .donasi-button {
+            padding: 15px 30px;
+            font-size: 4vw;
+            /* Ukuran lebih besar untuk perangkat kecil */
+        }
+    }
+
+    /* Media query untuk perangkat lebih besar */
+    @media (min-width: 1200px) {
+        .donasi-button {
+            padding: 25px 50px;
+            font-size: 1.5vw;
+            /* Ukuran teks lebih kecil untuk desktop */
+        }
+    }
+
+    .danger {
+        padding: 10px;
+    }
 </style>
 
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="#" class="navbar-brand">NyannKoZen</a>
-            <button class="navbar-toggler" id="navbar-toggler">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <div class="bs-info-border-subtle">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">NyannKo ZEN</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <li class="nav-item">
+                            <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+                        </li>
+                        <li class="nav-item">
+                            <!-- <a class="nav-link" href="#">Link</a> -->
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Halaman Utama
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="biodata.html">Biodata developer</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"></a></li>
+                            </ul>
+                        </li>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="foto/game 1.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="foto/game 2(0;00;00;00).png" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
             </button>
-            <div class="navbar-menu" id="navbar-menu">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle">Menu</a>
-                        <div class="dropdown-menu" id="dropdown-menu">
-                            <div class="dropdown-item"><a
-                                    href="https://www.instagram.com/nyannko.studio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">instagram</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                    </li>
-                </ul>
-            </div>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-    </nav>
+    </div>
 
 
-    <header class="header">
-        <h1>NyannKo ZEN Game</h1>
-    </header>
-    <main class="main-content">
-        <section class="carousel-container">
-            <div class="carousel">
-                <div class="carousel-item">
-                    <img src="./foto/game 1.png" alt="...">
-                    <p></p>
-                </div>
-                <div class="carousel-item">
-                    <img src="./foto/./game 2(0;00;00;00).png" alt="App 2">
-                    <p></p>
-                </div>
-                <div class="carousel-item">
-                    <img src="./foto/game 1.png" alt="App 3">
-                    <p></p>
-                </div>
-                <div class="carousel-item">
-                    <img src="./foto/game 2(0;00;00;00).png" alt="App 4">
-                    <p></p>
-                </div>
-            </div>
-            <button class="carousel-control prev" id="prev-btn">&#10094;</button>
-            <button class="carousel-control next" id="next-btn">&#10095;</button>
-        </section>
+
+    <div>
         <section class="app-description">
             <h2>Coming Soon!</h2>
             <div class="app-info">
@@ -440,83 +252,59 @@
                         mayat hidup di dalam sekolahnya!</p>
                     <a href="twin.html" class="download-btn">Cek Informasi Disini</a>
                 </div>
-            </div>
-            <div class="description-content">
-                <div class="information">
-                    <div class="infotit">
-                        <h3> INFORMASI COPYRIGHT DAN HAK CIPTA!</h3>
-                    </div>
-                    <div class="dec">
-                        <p>Game kami bukan 100% game buatan kami!
-                            mengapa begitu?
-                        </p>
-                        <p>Yang original dari game kami hanyalah character design karena kami memiliki designer! selain
-                            itu juga
-                            yang original di-game kami adalah cerita, dan pemogramannya, selain itu game kami hanyalah
-                            game yang mengambil hak milik orang lain!
-                            kami akan berusaha untuk menjadikan game ini original sepenuhnya! karena kami hanyalah
-                            gamdev kecil, anggota kami berjumblah 4 orang
-                            , kami sangat kesulitan dalam pengembangan game ini, oleh karena itu kami memerlukan banyak
-                            anggota untuk mengembakan game ini.
-
-
-                        </p>
-
-                        <p>Kami berusaha agar kalian nyaman dalam memainkan game kami! kami usahakan secepatnya
-                            mengganti atau mengubah hak cipta dalam game ini!
-                            kami tidak mau merugikan pihak manapun! kami disini hanyalah gamdev pemula yang belum
-                            berpengalaman dalam membuat game!
-                        </p>
-                    </div>
-
+                <div>
+                    <a href="https://sociabuzz.com/justnea/tribe" target="_blank">
+                        <button class="donasi-button">
+                            Donasi
+                        </button>
+                    </a>
                 </div>
-                <div class="description-content">
-                    <div class="information">
-                        <div class="infotit">
-                            <h3>  BERIKUT ISI KONTEN YANG TIDAK ORIGINAL DI DALAM GAME INI! </h3>
-                        </div>
-                        <div class="dec">
-                       <p>-Backsound/BGM</p>
-                       <p>-Background</p>
-                       <p>-Music</p>
-                        </div>
 
-                    </div>
+            </div>
 
-        </section>
-    </main>
-    <script>
-        document.getElementById('navbar-toggler').addEventListener('click', function () {
-            var menu = document.getElementById('navbar-menu');
-            menu.classList.toggle('active');
-        });
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const carousel = document.querySelector('.carousel');
-        const items = document.querySelectorAll('.carousel-item');
-        const totalItems = items.length;
-        let index = 0;
+            <div class="danger">
+            </div>
+            <div class="card border-danger mb-3">
+                <div class="card-header">INFORMASI</div>
+                <div class="card-body text-danger">
+                    <h5 class="card-title">INFORMASI COPYRIGHT DAN HAK CIPTA!</h5>
+                    <p class="card-text">Game kami bukan 100% game buatan kami! mengapa begitu?
 
-        function updateCarousel() {
-            const offset = -index * 100;
-            carousel.style.transform = `translateX(${offset}%)`;
-        }
+                        Yang original dari game kami hanyalah character design karena kami memiliki designer! selain itu
+                        juga yang original di-game kami adalah cerita, dan pemogramannya, selain itu game kami hanyalah
+                        game yang mengambil hak milik orang lain! kami akan berusaha untuk menjadikan game ini original
+                        sepenuhnya! karena kami hanyalah gamdev kecil, anggota kami berjumblah 4 orang , kami sangat
+                        kesulitan dalam pengembangan game ini, oleh karena itu kami memerlukan banyak anggota untuk
+                        mengembakan game ini.
 
-        nextBtn.addEventListener('click', () => {
-            index = (index + 1) % totalItems;
-            updateCarousel();
-        });
+                        Kami berusaha agar kalian nyaman dalam memainkan game kami! kami usahakan secepatnya mengganti
+                        atau mengubah hak cipta dalam game ini! kami tidak mau merugikan pihak manapun! kami disini
+                        hanyalah gamdev pemula yang belum berpengalaman dalam membuat game!
+                    <p>
 
-        prevBtn.addEventListener('click', () => {
-            index = (index - 1 + totalItems) % totalItems;
-            updateCarousel();
-        });
+                    </p>
+                </div>
 
-        // Auto slide
-        setInterval(() => {
-            nextBtn.click();
-        }, 5000); // Change slides every 5 seconds
-    </script>
+                <div class="list22">
+                    <ul class="list-group">
+
+                        <h5 class="card-title">BERIKUT ISI KONTEN YANG TIDAK ORIGINAL DI DALAM GAME INI!</h5>
+
+                        <li class="list-group-item list-group-item-warning">Backsound/BGM</li>
+                        <li class="list-group-item list-group-item-warning">Music</li>
+                        <li class="list-group-item list-group-item-warning">Background</li>
+                    </ul>
+                </div>
+
+
+
+
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+<script src="app.js"></script>
 
 </html>

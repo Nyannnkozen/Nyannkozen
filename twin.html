@@ -342,6 +342,48 @@
         background-color: #3700b3;
     }
 
+    .download-button {
+        padding: 15px 30px;
+        font-size: 18px;
+        background-color: #28a745;
+        color: white;
+        border: 2px solid #28a745;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        text-align: center;
+    }
+
+    .download-button:disabled {
+        background-color: #d3d3d3;
+        border-color: #b8b8b8;
+        cursor: not-allowed;
+    }
+
+    .download-button:hover {
+        background-color: #218838;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .popup.active {
+        display: block;
+    }
+
     /* Responsive Styles */
     @media (max-width: 768px) {
         .carousel-item img {
@@ -375,8 +417,6 @@
     .dec {
         color: #3700b3;
     }
-
-
 </style>
 
 <body>
@@ -390,9 +430,15 @@
             <div class="app-info">
                 <img src="foto/Icon.png" alt="App Icon" class="app-icon">
                 <div class="description-content">
-                    <h3>Twins (Prologue) </h3>
-                    <p>Akan segera dirilis pada bulan Desember!</p>
-                    <a href="" class="download-btn">Segera Hadir!</a>
+                    <h3>Twins (Demo) </h3>
+                    <p>TERSEDIA 4 MARET 2025</p>
+                    <button class="download-button" id="downloadBtn" disabled>
+                        Download
+                    </button>
+
+                    <div class="popup" id="countdownPopup">
+                        <p id="countdownText">Countdown:</p>
+                    </div>
                 </div>
                 </selection>
             </div>
@@ -401,12 +447,80 @@
 
 
                 <section class="app-description1">
-                    <h2>Informasi</h2>
-                            <p>Ini adalah versi pendek dari cerita twin,
-                                full game akan segera dirilis setelah prologue ini!
-                            </p>
-                    </div>
+                    <h2>Sinopsis</h2>
+                    <p>Chiya dan Chiyu, saudara kembar identik, selalu bersama dalam suka dan duka. Bagi mereka, tak
+                        ada yang lebih berharga selain kebersamaan. Hari itu, mereka memulai babak baru dalam hidup—hari
+                        pertama di sekolah menengah pertama.
 
+                        Namun, apa yang seharusnya menjadi awal penuh harapan justru berubah menjadi mimpi buruk. Sebuah
+                        bencana datang tanpa peringatan, merenggut kebebasan mereka dalam sekejap. Sekolah yang
+                        seharusnya menjadi tempat belajar kini berubah menjadi tempat bertahan hidup. Terisolasi dari
+                        dunia luar, hanya ada mereka berdua.
 
+                        Di tengah ketakutan dan ketidakpastian, Chiya dan Chiyu harus berjuang untuk bertahan. Akankah
+                        mereka menemukan jalan keluar, ataukah sekolah itu akan menjadi penjara selamanya?
+
+                    </p>
+            </div>
+
+            <script>
+                // Tentukan waktu yang diinginkan (4 Maret 2025, pukul 10:00 AM)
+                var targetDate = new Date("2025-03-04T10:00:00");
+
+                // Fungsi untuk memeriksa apakah tombol sudah bisa diaktifkan
+                function checkTime() {
+                    var currentDate = new Date();
+
+                    // Periksa apakah waktu saat ini sudah melewati waktu yang ditentukan
+                    if (currentDate >= targetDate) {
+                        document.getElementById("downloadBtn").disabled = false;  // Aktifkan tombol
+                    } else {
+                        document.getElementById("downloadBtn").disabled = true;   // Nonaktifkan tombol
+                    }
+                }
+
+                // Fungsi untuk menghitung sisa waktu dan menampilkan countdown
+                function updateCountdown() {
+                    var currentDate = new Date();
+                    var timeRemaining = targetDate - currentDate; // Waktu yang tersisa dalam milidetik
+
+                    if (timeRemaining <= 0) {
+                        // Jika waktu sudah habis, tutup popup dan tidak tampilkan lagi
+                        document.getElementById("countdownPopup").classList.remove("active");
+                        return;
+                    }
+
+                    var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                    // Format waktu dalam bentuk countdown
+                    var countdownText = "Tersedia pada: " + days + " Hari, " + hours + " Jam, " + minutes + " Menit, " + seconds + " Detik";
+                    document.getElementById("countdownText").textContent = countdownText;
+
+                    // Tampilkan popup countdown
+                    document.getElementById("countdownPopup").classList.add("active");
+                }
+
+                // Fungsi untuk mengarahkan ke URL ketika tombol diklik
+                function redirectToURL() {
+                    window.location.href = "https://drive.google.com/drive/folders/100NG4Itc2dTl37BzDtzTfDNX9E9aSb-8?usp=drive_link";  // Pengalihan ke URL
+                }
+
+                // Event listener untuk tombol, saat diklik akan mengarahkan ke URL
+                document.getElementById("downloadBtn").addEventListener("click", function () {
+                    redirectToURL();
+                });
+
+                // Panggil fungsi untuk memeriksa waktu saat halaman dimuat
+                checkTime();
+
+                // Memeriksa setiap detik untuk memperbarui status tombol dan countdown
+                setInterval(function () {
+                    checkTime();
+                    updateCountdown();
+                }, 1000);
+            </script>
 
 </body>
